@@ -8,11 +8,15 @@ fn solve(t: u64, n: Vec<u64>) -> bool {
         let b = n[1];
         let mut va = n[2..].to_vec();
         let mut vm = n[2..].to_vec();
+        let mut vc = n[2..].to_vec();
         va.insert(0, a + b);
         vm.insert(0, a * b);
+        vc.insert(0, a * 10u64.pow(((b as f64).log10().floor() + 1f64) as u32) + b);
         if solve(t, va) {
             true
         } else if solve(t, vm) {
+            true
+        } else if solve(t, vc) {
             true
         } else {
             false
